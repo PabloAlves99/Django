@@ -90,12 +90,7 @@ class RecipeViewsTest(RecipeTestBase):
         self.make_recipe(title=needed_title)
 
         response = self.client.get(
-            reverse(
-                'recipes:recipe',
-                kwargs={
-                    'id': 1
-                }
-            )
+            reverse('recipes:recipe', kwargs={'id': 1})
         )
         content = response.content.decode('utf-8')
 
