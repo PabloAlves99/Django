@@ -47,7 +47,7 @@ class RecipeViewsTest(TestCase):
             preparation_steps_is_html=False,
             is_published=True,
         )
-        assert 1 == 1
+        pass
 
     def test_recipe_category_view_function_is_correct(self):
         view = resolve(
