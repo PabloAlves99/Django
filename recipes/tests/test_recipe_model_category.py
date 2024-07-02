@@ -10,7 +10,7 @@ class RecipeCategoryModelTest(RecipeTestBase):
         )
         return super().setUp()
 
-    def test_recipe_category_model_string_representarion_is_name_field(self):
+    def test_recipe_category_model_string_representation_is_name_field(self):
         self.assertEqual(
             str(self.category),
             self.category.name
