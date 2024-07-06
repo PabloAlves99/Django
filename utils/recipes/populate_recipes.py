@@ -5,7 +5,6 @@ import os
 import random
 import django
 from django.utils.text import slugify
-from django.conf import settings
 from recipes.models import Recipe, Category, User
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
@@ -101,7 +100,7 @@ def populate_recipes():
         'recipes/covers/2024/07/06/image8.jpg',
     ]
 
-    for i in range(10):
+    for _ in range(10):
         title = random.choice(titles)
         description = random.choice(descriptions)
         slug = slugify(title)
@@ -113,8 +112,6 @@ def populate_recipes():
         cover = random.choice(images)
         preparation_time_unit = units[0]
         servings_unit = units[1]
-
-        # Seleciona aleatoriamente uma categoria e um autor
         category = random.choice(categories)
         author = random.choice(authors)
 
