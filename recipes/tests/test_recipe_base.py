@@ -23,7 +23,7 @@ class RecipeTestBase(TestCase):
 
     def make_recipe(
             self, category_data=None, author_data=None, title='Recipe Title',
-            description='Recipe Description', slug='recipe-slug',
+            description='Recipe Description', slug='recipe-slug-PA',
             preparation_time=10, preparation_time_unit='Minutos',
             servings=5, servings_unit='Porções',
             preparation_steps='Recipe Preparation Steps',

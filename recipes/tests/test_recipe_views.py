@@ -1,5 +1,6 @@
 from django.urls import resolve, reverse
 from recipes import views
+
 from .test_recipe_base import RecipeTestBase
 
 
@@ -75,6 +76,7 @@ class RecipeViewsTest(RecipeTestBase):
         """Test recipe is_published False dont show"""
         # Need a recipe for this test
         recipe = self.make_recipe(is_published=False)
+
         response = self.client.get(
             reverse('recipes:recipe', kwargs={'id': recipe.category.id})
         )
@@ -112,3 +114,7 @@ class RecipeViewsTest(RecipeTestBase):
         response = self.client.get(
             reverse('recipes:recipe', kwargs={'id': recipe.id})
         )
+
+    def test_recipe_search_uses_correct_view_function(self):
+        resolved = resolve(reverse('recipes:search'))
+        self.assertIs(resolved.func, views.search)
