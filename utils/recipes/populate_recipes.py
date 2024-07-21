@@ -118,7 +118,7 @@ def populate_recipes():
         Recipe.objects.create(
             title=title,
             description=description,
-            slug=slug,
+            slug=f'{slug}_{random.randint(1000, 10000)}',
             preparation_time=preparation_time,
             preparation_time_unit=preparation_time_unit,
             servings=servings,
