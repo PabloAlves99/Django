@@ -1,8 +1,8 @@
 from unittest import TestCase
 
+from authors.forms import RegisterForm
 from django.test import TestCase as DjangoTestCase
 from django.urls import reverse
-from authors.forms import RegisterForm
 from parameterized import parameterized
 
 
@@ -58,8 +58,8 @@ class AuthorRegisterFormIntegrationTest(DjangoTestCase):
             'first_name': 'first',
             'last_name': 'last',
             'email': 'email@anyemail.com',
-            'password': '1',
-            'password2': '1',
+            'password': 'Str0ngP@ssword1',
+            'password2': 'Str0ngP@ssword1',
         }
         return super().setUp(*args, **kwargs)
 
