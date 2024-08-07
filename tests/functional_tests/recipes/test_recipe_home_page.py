@@ -10,3 +10,8 @@ class RecipeHomePageFunctionalTest(RecipeBaseFunctionalTest):
         self.browser.get(self.live_server_url)
         body = self.browser.find_element(By.TAG_NAME, 'body')
         self.assertIn('No recipes found here 🥲', body.text)
+
+
+class RecipeTestBase(TestCase, RecipeMixin):
+    def setUp(self) -> None:
+        return super().setUp()
