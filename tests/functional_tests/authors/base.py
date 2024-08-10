@@ -1,7 +1,7 @@
 import time
 
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
-from utils.browser import make_chrome_browser
+from utils.authors.browser import make_chrome_browser
 
 
 class AuthorsBaseTest(StaticLiveServerTestCase):
