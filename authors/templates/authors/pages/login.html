@@ -9,5 +9,9 @@
   </div>
 
   {% include 'recipes/partials/messages.html' %}
-  {% include 'recipes/partials/form.html' %} 
+
+  {% if not user.is_authenticated %}
+    {% include 'recipes/partials/form.html' %}
+  {% endif %}
+
 {% endblock content %}
