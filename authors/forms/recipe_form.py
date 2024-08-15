@@ -1,6 +1,6 @@
 from django import forms
 from recipes.models import Recipe
-from utils.django_forms import add_attr
+from utils.recipes.django_forms import add_attr
 
 
 class AuthorRecipeForm(forms.ModelForm):
