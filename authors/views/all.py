@@ -1,11 +1,11 @@
-from django.http import Http404
-from django.shortcuts import redirect, render
-from django.urls import reverse
+from authors.forms import LoginForm, RegisterForm
+from authors.forms.recipe_form import AuthorRecipeForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from authors.forms.recipe_form import AuthorRecipeForm
-from .forms import LoginForm, RegisterForm
+from django.http import Http404
+from django.shortcuts import redirect, render
+from django.urls import reverse
 from recipes.models import Recipe
 
 
@@ -31,6 +31,7 @@ def register_create(request):
         user.set_password(user.password)
         user.save()
         messages.success(request, 'Your user is created, please log in.')
+
         del (request.session['register_form_data'])
         return redirect(reverse('authors:login'))
 
@@ -85,8 +86,10 @@ def logout_view(request):
 
 @login_required(login_url='authors:login', redirect_field_name='next')
 def dashboard(request):
-    recipes = Recipe.objects.filter(is_published=False, author=request.user)
-
+    recipes = Recipe.objects.filter(
+        is_published=False,
+        author=request.user
+    )
     return render(
         request,
         'authors/pages/dashboard.html',
@@ -143,7 +146,7 @@ def dashboard_recipe_new(request):
     )
 
     if form.is_valid():
-        recipe = form.save(commit=False)
+        recipe: Recipe = form.save(commit=False)
 
         recipe.author = request.user
         recipe.preparation_steps_is_html = False
